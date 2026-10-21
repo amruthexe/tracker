@@ -204,10 +204,20 @@ export default function DashboardPage() {
 
       {/* ── SHIFT BADGE ── */}
       {data && (
-        <div className="mb-5">
-          <Badge variant={shiftStyle.badge} size="md">
-            {shiftStyle.emoji} {data.todayShift === 'OFF' ? 'Day Off' : `${data.todayShift} — ${getShiftLabel(data.todayShift)}`}
-          </Badge>
+        <div className="mb-5 flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center flex-wrap gap-2">
+            <Badge variant={shiftStyle.badge} size="md">
+              {shiftStyle.emoji} {data.todayShift === 'OFF' ? 'Day Off (No Office Shift)' : `${data.todayShift} — ${getShiftLabel(data.todayShift)}`}
+            </Badge>
+            {data.todayShift === 'OFF' && (
+              <span className="text-xs text-[#EB4917] font-semibold bg-orange-50 border border-orange-200 px-2.5 py-0.5 rounded-lg flex items-center gap-1">
+                ⏰ 9:30 AM Study Alert
+              </span>
+            )}
+          </div>
+          <Link href="/timetable" className="text-xs font-semibold text-[#EB4917] hover:underline flex items-center gap-1">
+            View Today&apos;s Timetable →
+          </Link>
         </div>
       )}
 

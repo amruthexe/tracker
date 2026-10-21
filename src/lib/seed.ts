@@ -37,9 +37,9 @@ const COURSE_VIDEOS = [
 type ShiftEntry = { date: string; shift: 'S1' | 'S2' | 'S3' | 'OFF' }
 
 const SHIFT_SCHEDULE: ShiftEntry[] = [
-  // 22–23 Oct: no office shift yet, study at home
-  { date: '2026-10-22', shift: 'S2' }, // Day 1 — study day (office starts 24th)
-  { date: '2026-10-23', shift: 'S2' }, // Day 2
+  // 22–23 Oct: no office shift, day off from office (study at home)
+  { date: '2026-10-22', shift: 'OFF' }, // Day 1 — Day Off from office
+  { date: '2026-10-23', shift: 'OFF' }, // Day 2 — Day Off from office
   // S2: 24–28 Oct
   { date: '2026-10-24', shift: 'S2' },
   { date: '2026-10-25', shift: 'S2' },

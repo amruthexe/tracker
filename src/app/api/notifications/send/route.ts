@@ -15,6 +15,11 @@ const NOTIFICATION_TEMPLATES: Record<string, { title: string; body: string; url:
     body: "Good morning! Your React Native video is waiting. Let's hit that 4-hour goal today! 🚀",
     url: '/videos',
   },
+  study_off_morning: {
+    title: '📹 Study Session 1 (9:00 – 11:30 AM)',
+    body: "Day Off Study Reminder: Time to watch today's React Native video or revise concepts! 🚀",
+    url: '/videos',
+  },
   study_reminder: {
     title: '⏰ Study Check-in',
     body: "Have you watched today's video? Don't break your streak! 🔥",

@@ -17,8 +17,20 @@ export async function GET() {
     const todayDate = new Date(today)
 
     // Today's shift
-    const todayShiftDoc = await ShiftScheduleModel.findOne({ scheduleDate: todayDate })
-    const todayShift = todayShiftDoc?.shiftCode ?? 'S2'
+    let todayShiftDoc = await ShiftScheduleModel.findOne({ scheduleDate: todayDate })
+    // If today is Oct 22 or 23 and previously saved as S2 without override, correct to OFF
+    if (
+      (today === '2026-10-22' || today === '2026-10-23') &&
+      (!todayShiftDoc || (todayShiftDoc.shiftCode === 'S2' && !todayShiftDoc.overrideNote))
+    ) {
+      await ShiftScheduleModel.findOneAndUpdate(
+        { scheduleDate: todayDate },
+        { $set: { shiftCode: 'OFF' } },
+        { upsert: true, new: true }
+      )
+      todayShiftDoc = await ShiftScheduleModel.findOne({ scheduleDate: todayDate })
+    }
+    const todayShift = todayShiftDoc?.shiftCode ?? getDefaultShift(today)
 
     // Completed videos count
     const completedVideos = await VideoProgressModel.countDocuments({ status: 'completed' })

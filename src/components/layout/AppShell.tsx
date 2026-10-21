@@ -8,6 +8,8 @@ import {
   BookMarked, BarChart3, Settings, Menu, X, Zap, ChevronRight
 } from 'lucide-react'
 
+import NotificationScheduler from '@/components/notifications/NotificationScheduler'
+
 const NAV_ITEMS = [
   { href: '/dashboard',   label: 'Dashboard',   icon: LayoutDashboard },
   { href: '/study-plan',  label: 'Study',        icon: BookOpen },
@@ -34,6 +36,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen bg-[#F7F7F7]" style={{ fontFamily: 'var(--font-poppins)' }}>
+      <NotificationScheduler />
 
       {/* ── DESKTOP SIDEBAR ─────────────────────────────── */}
       <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-[#E8E8E8] fixed inset-y-0 left-0 z-30">

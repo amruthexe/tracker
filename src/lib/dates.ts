@@ -81,8 +81,10 @@ export function getDefaultShift(dateStr: string): 'S1' | 'S2' | 'S3' | 'OFF' {
   // OFF: 19–20 Nov
   if (dateNum >= 20261119 && dateNum <= 20261120) return 'OFF'
 
-  // Oct 22–23 are video days (before S2 starts at office)
-  return 'S2'
+  // Oct 22–23: Day off from office (self-study at home before S2 office shift starts on Oct 24)
+  if (dateNum >= 20261022 && dateNum <= 20261023) return 'OFF'
+
+  return 'OFF'
 }
 
 export function getShiftColor(shift: string): string {

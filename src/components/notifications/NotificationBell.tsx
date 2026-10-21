@@ -13,6 +13,7 @@ interface NotifType {
 }
 
 const NOTIF_TYPES: NotifType[] = [
+  { key: 'study_off_morning', emoji: '📹', label: 'Day Off 9:30 AM',  desc: '9:30 AM study session reminder for Day Off' },
   { key: 'study_morning',  emoji: '📚', label: 'Morning Study',    desc: 'Remind me to study in the morning'   },
   { key: 'study_reminder', emoji: '⏰', label: 'Study Check-in',   desc: 'Mid-day reminder to watch the video'  },
   { key: 'gym_reminder',   emoji: '🏋️', label: 'Gym Time',         desc: 'Remind me to hit the gym'             },

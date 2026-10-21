@@ -7,6 +7,23 @@ import { z } from 'zod'
 export async function GET() {
   try {
     await connectDB()
+    // Auto-correct Oct 22 and Oct 23 previously seeded as S2 without user override
+    await ShiftScheduleModel.updateMany(
+      {
+        scheduleDate: {
+          $in: [
+            new Date('2026-10-22T00:00:00.000Z'),
+            new Date('2026-10-22'),
+            new Date('2026-10-23T00:00:00.000Z'),
+            new Date('2026-10-23'),
+          ],
+        },
+        shiftCode: 'S2',
+        overrideNote: { $exists: false },
+      },
+      { $set: { shiftCode: 'OFF' } }
+    )
+
     const schedules = await ShiftScheduleModel.find({}).sort({ scheduleDate: 1 }).lean()
     return NextResponse.json(schedules.map(s => ({
       ...s,
