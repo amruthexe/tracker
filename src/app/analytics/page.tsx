@@ -193,7 +193,7 @@ export default function AnalyticsPage() {
               <BarChart data={data.study.weekly} barSize={28}>
                 <XAxis dataKey="week" tick={{ fontSize: 11 }} />
                 <YAxis tick={{ fontSize: 11 }} />
-                <Tooltip formatter={(val: number) => [`${val} min`, 'Logged']} />
+                <Tooltip formatter={(val) => [`${Number(val)} min`, 'Logged']} />
                 <Bar dataKey="actualMinutes" fill="#EB4917" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

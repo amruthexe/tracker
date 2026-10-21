@@ -235,27 +235,25 @@ export default function VideosPage() {
       </div>
 
       {/* Progress Summary */}
-      <Card className="mb-6">
-        <div className="flex items-center gap-6 flex-wrap">
-          <div className="flex-1">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium text-[#171717]">Overall Progress</span>
-              <span className="text-sm font-bold text-[#EB4917]">{completed}/22 videos</span>
-            </div>
-            <ProgressBar value={Math.round((completed / 22) * 100)} color="#EB4917" showPercent />
+      <Card className="mb-4">
+        <div className="space-y-3">
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium text-[#171717]">Overall Progress</span>
+            <span className="text-sm font-bold text-[#EB4917]">{completed}/22 videos</span>
           </div>
-          <div className="flex gap-4 shrink-0">
-            <div className="text-center">
-              <p className="text-2xl font-bold text-green-600">{completed}</p>
-              <p className="text-xs text-[#9CA3AF]">Done</p>
+          <ProgressBar value={Math.round((completed / 22) * 100)} color="#EB4917" showPercent />
+          <div className="flex gap-3 pt-1">
+            <div className="flex-1 text-center bg-green-50 rounded-xl py-2">
+              <p className="text-xl font-bold text-green-600">{completed}</p>
+              <p className="text-[10px] text-[#9CA3AF]">Done</p>
             </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-yellow-600">{inProgress}</p>
-              <p className="text-xs text-[#9CA3AF]">In Progress</p>
+            <div className="flex-1 text-center bg-yellow-50 rounded-xl py-2">
+              <p className="text-xl font-bold text-yellow-600">{inProgress}</p>
+              <p className="text-[10px] text-[#9CA3AF]">In Progress</p>
             </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-[#9CA3AF]">{22 - completed - inProgress}</p>
-              <p className="text-xs text-[#9CA3AF]">Remaining</p>
+            <div className="flex-1 text-center bg-[#F7F7F7] rounded-xl py-2">
+              <p className="text-xl font-bold text-[#9CA3AF]">{22 - completed - inProgress}</p>
+              <p className="text-[10px] text-[#9CA3AF]">Remaining</p>
             </div>
           </div>
         </div>
@@ -277,17 +275,17 @@ export default function VideosPage() {
         )}
       </Card>
 
-      {/* Filters */}
-      <div className="flex items-center gap-2 flex-wrap mb-4">
-        <Filter size={14} className="text-[#9CA3AF]" />
+      {/* Filters — horizontal scroll on mobile */}
+      <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-1 scrollbar-none -mx-4 px-4">
+        <Filter size={14} className="text-[#9CA3AF] shrink-0" />
         {FILTERS.map(f => (
           <button
             key={f.key}
             onClick={() => setFilter(f.key)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+            className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               filter === f.key
                 ? 'bg-[#EB4917] text-white'
-                : 'bg-white text-[#6B7280] border border-[#E8E8E8] hover:bg-[#F7F7F7]'
+                : 'bg-white text-[#6B7280] border border-[#E8E8E8] active:bg-[#F7F7F7]'
             }`}
           >
             {f.label}

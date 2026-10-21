@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="40" fill="#EB4917"/>
+  <polygon points="96,50 140,80 140,130 96,155 52,130 52,80" fill="none" stroke="white" stroke-width="8"/>
+  <line x1="96" y1="50" x2="96" y2="80" stroke="white" stroke-width="5"/>
+  <circle cx="96" cy="96" r="22" fill="white" opacity="0.95"/>
+  <polygon points="89,86 110,96 89,106" fill="#EB4917"/>
+  <text x="96" y="175" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="16" font-weight="bold">RN</text>
+</svg>
